@@ -1,0 +1,103 @@
+dataset:
+  train:
+    name: multiclaim_extended
+    relationship: [backlink, claimreview_schema]
+    crosslingual: False
+    fact_check_language: null
+    language: null
+    post_language: null
+    fact_check_languages_exclude: null        
+    languages_exclude: null
+    post_languages_exclude: null
+    split: train
+    version: original
+    filter_mapped_fact_checks: True
+    negatives: random
+  dev:
+    dev_all:
+      name: multiclaim_extended
+      relationship: [backlink, claimreview_schema]
+      crosslingual: False
+      fact_check_language: null
+      language: null
+      post_language: null
+      fact_check_languages_exclude: null        
+      languages_exclude: null
+      post_languages_exclude: null
+      split: dev
+      version: original
+      filter_mapped_fact_checks: True
+    dev_crosslingual:
+      name: multiclaim_extended
+      relationship: [backlink, claimreview_schema]
+      crosslingual: True
+      fact_check_language: null
+      language: null
+      post_language: null
+      fact_check_languages_exclude: null        
+      languages_exclude: null
+      post_languages_exclude: null
+      split: dev
+      version: original
+      filter_mapped_fact_checks: True
+  test:
+    test_all:
+      name: multiclaim_extended
+      relationship: [backlink, claimreview_schema]
+      crosslingual: False
+      fact_check_language: null
+      language: null
+      post_language: null
+      fact_check_languages_exclude: null        
+      languages_exclude: null
+      post_languages_exclude: null
+      split: test
+      version: original
+      filter_mapped_fact_checks: True
+    test_crosslingual:
+      name: multiclaim_extended
+      relationship: [backlink, claimreview_schema]
+      crosslingual: True
+      fact_check_language: null
+      language: null
+      post_language: null
+      fact_check_languages_exclude: null        
+      languages_exclude: null
+      post_languages_exclude: null
+      split: test
+      version: original
+      filter_mapped_fact_checks: True
+train_params:
+  seed: 3407
+  name: example_run
+  train:
+    device: cuda
+    dtype: bfloat16
+    batch_size: 16
+    num_epochs: 1
+    warmup_steps: 800
+    label_smoothing: 0.1
+    similarity_function: cosine
+    similarity_scale: 20.0
+    ema: False
+    freezing: False 
+    metrics_window_size: 100
+    evaluation_steps: null
+    save_vectors: False
+    save_models: False
+    save_final_model: True
+    num_negatives: 5
+    as_hard_negatives: False
+    sample_negatives: False
+  optimizer:
+    name: adamw
+    lr: 0.00005
+    weight_decay: 0.005 
+    clip_value: 1.0
+    sam: False
+  model:
+    name: sentence-transformers/all-MiniLM-L12-v2
+    pooling: mean
+    cache_dir: null
+    vectorizer_batch_size: 256
+
